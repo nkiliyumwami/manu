@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Festive', cursive;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* background-image: url('./img/winter.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(1px); */
+}
+
+
+.header {
+  padding: 1rem;
+  background-color: bisque;
+}
+
+.profile span {
+  padding: 1.25rem;
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 1 0 auto;
+  padding: 1.25rem;
+  max-width: fit-content;
+  max-height: fit-content;
+  /* background-color: bisque; */
+  border-radius: 10px;
+  margin: 30px;
+  align-items: center;
+  align-content: center;
+  
+}
+
+nav ul {
+  text-align: center;
+  /* margin-top: 2rem; */
+  background-color: bisque;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  font-size: larger;
+}
+
+li {
+  display: inline-block;
+  margin-right: 8rem;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 20px;
+  background-color: bisque;
+}
+
+.footer a {
+  margin-left: 8rem;
+}
+
+.footer a {
+  color: black;
+}
+
+
+@media only screen and (max-width: 600px) {
+  li {
+    display: inline-block;
+    margin-right: 2rem;
+  }
+}
+
+#color {
+    width: 300px;
+    height: 300px;
+    margin-top: 2rem;
+    display: block;
+    background-color: blue;
+    border-radius: 25%;
+    }
+    
+
+    .container {
+        display: flex;
+    }
+    
+    input {
+        width: 50%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 3px solid #ccc;
+        border-radius: 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        width: 50%;
+        font-weight: 700;
+        font-size: larger;
+        text-align: center;
+    }
+
+    .tech, .text {
+        text-align: center;
+        font-size: larger;
+        font-weight: 700;
+        margin: 1rem;
+    }
+
+    .right {
+        text-align: center;
+        font-size: larger;  
+        font-weight: 700;
+        color: red;
+
+    }
