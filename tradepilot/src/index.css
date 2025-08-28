@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+/* Design tokens via Tailwind v4 @theme */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+
+  --text-2xs: 0.75rem; /* 12px */
+  --text-xs: 0.875rem; /* 14px */
+  --text-sm: 1rem; /* 16px */
+  --text-lg: 1.25rem; /* 20px */
+  --text-xl: 1.5rem; /* 24px */
+  --text-2xl: 2rem; /* 32px */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+
+  /* Slate grays scale */
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-white: #ffffff;
+}
+
+:root {
+  color-scheme: light;
+  --bg: var(--color-white);
+  --fg: var(--color-slate-900);
+  --muted: var(--color-slate-600);
+  --border: var(--color-slate-200);
+  --card: #ffffff;
+  --elev: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1220; /* near slate-950 */
+  --fg: #e5e7eb; /* tailwind gray-200 */
+  --muted: #9ca3af; /* gray-400 */
+  --border: #1f2937; /* gray-800 */
+  --card: #0f172a; /* slate-900 */
+  --elev: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Base resets and typography */
+html, body, #root { height: 100%; }
+body {
+  @apply bg-[--bg] text-[--fg] font-sans;
+}
+
+* { @apply border-[--border]; }
+
+/* Utility tokens mapping for spacing and typography */
+:root {
+  --space-1: var(--spacing-1);
+  --space-2: var(--spacing-2);
+  --space-3: var(--spacing-3);
+  --space-4: var(--spacing-4);
+  --space-5: var(--spacing-5);
+  --space-6: var(--spacing-6);
+  --space-7: var(--spacing-7);
+}
+
+/***** Component primitives *****/
+
+.button-base {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-[--fg] font-medium leading-6 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-[--bg];
+}
+.button-primary { @apply button-base bg-[--color-primary] hover:bg-[--color-primary-hover] text-white; }
+.button-secondary { @apply button-base bg-[--card] hover:bg-[--color-slate-200] text-[--fg] border; }
+.button-ghost { @apply button-base bg-transparent hover:bg-black/5 dark:hover:bg-white/10; }
+
+.badge { @apply inline-flex items-center rounded-full px-2 py-0.5 text-[length:--text-2xs] font-medium; }
+.badge-success { @apply badge bg-[--color-success] text-white; }
+.badge-warning { @apply badge bg-[--color-warning] text-white; }
+.badge-danger { @apply badge bg-[--color-danger] text-white; }
+
+.card { @apply bg-[--card] border rounded-lg shadow-sm; box-shadow: var(--elev); }
+
+.input {
+  @apply w-full rounded-md border bg-transparent px-3 py-2 text-sm placeholder:[color:var(--muted)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-primary];
+}
+.input-invalid { @apply border-[--color-danger]; }
+.input-help { @apply mt-1 text-[length:--text-2xs] text-[--muted]; }
+
+.table { @apply w-full text-sm; }
+.table thead th { @apply sticky top-0 bg-[--card] text-left font-semibold; }
+.table tbody tr { @apply border-b; }
+
+.tablist { @apply inline-flex gap-1 rounded-md bg-black/5 p-1 dark:bg-white/10; }
+.tab { @apply button-base rounded-md px-3 py-1 text-sm; }
+.tab[aria-selected="true"] { @apply bg-[--color-primary] text-white; }
+
+.modal-backdrop { @apply fixed inset-0 bg-black/50; }
+.modal-panel { @apply fixed inset-x-4 top-[10vh] z-50 mx-auto max-w-lg rounded-lg border bg-[--card] p-4 shadow-xl; }
+
+.skeleton { @apply animate-pulse rounded bg-black/10 dark:bg-white/10; }
+
+.toast { @apply pointer-events-auto rounded-md border bg-[--card] px-4 py-2 shadow-md; box-shadow: var(--elev); }
+
+.empty { @apply flex flex-col items-center justify-center gap-3 py-10 text-center text-[--muted]; }
+
+/***** Layout helpers *****/
+.container-app { @apply mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8; }
+.main-grid { @apply grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-4; }
+.sidebar { @apply hidden lg:block sticky top-0 h-[100dvh] overflow-y-auto border-r bg-[--card] p-4; }
+.mobile-cta { @apply fixed inset-x-0 bottom-0 z-40 border-t bg-[--card] p-3 shadow-sm lg:hidden; }
+
+/***** Accessible focus styles *****/
+:focus-visible { outline: none; box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 70%, transparent); }
