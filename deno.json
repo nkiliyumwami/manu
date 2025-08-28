@@ -1,0 +1,15 @@
+{
+  "tasks": {
+    "dev": "deno run -A --watch functions/csvStockData.ts"
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 100,
+    "singleQuote": true
+  }
+}
